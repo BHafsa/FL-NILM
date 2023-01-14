@@ -35,9 +35,9 @@ docker cp exp_exec:/home/guestuser/model_evaluation ./results
 
 ## Citation
 
-```
+
 Bousbiat, H.; Himeur, Y.; Varlamis, I.; Bensaali, F.; Amira, A.; Neural Load Disaggregation:Meta-analysis, Federated Learning and Beyond. Energies 2023
-```
+
 
 ## Author
 
