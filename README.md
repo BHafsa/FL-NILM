@@ -1,25 +1,32 @@
-# DNN-NILM-experiment
+# Federated NILMtk 
 
-The current repository is template-project for DNN-NILM scholars. 
-The project is compatible with the latest version of NILMtk as well as 
-the deep-nilmtk. It is aimed to offer a more inclusive environment/toolkit
-that can be used by PyTorch community as well as the Tensorflow community. 
-The goal is to decouple the NILM development from the deep learning 
-framework as well to improve the efficiency of research.
+![img](./images/FL-scheme.jpg)
 
-## The structure of the template
-The  repository suggests a pre-configured project for experimenting with deep-nilmtk
-and benefiting from the 
-1. **requirements.txt**: A file containing python requirements for executing
-of the experiment.
-2. **src**: This folder is expected to contain the source code for 
-the experimental setup. It has the following structure:
-  - **model**: A folder containing the code of the model.
-  - **data**: A containing python scripts for data pre-processing, data loaders and data post-processing.
-  - **experiment.py**: A python script setting up the code for the experiment.
-3. **data**: This repository is expected to contain the NILM datasets, in the hdf5 format, that will be used during the experimental setup. 
+The current repository suggests a federated NILM disaggregator allowing to simulate 
+distributed training to find a balance between high sampling rate required by
+deep models and the privacy of the consumers since no data is exchanged and the
+models are trained locally  and aggregated at a central node.
+
+## Working flow
+
+The suggested code allows the simulation of federated training setups. 
+The suggested extension is fully compatible with the new API of 
+NILMtk. It allows specifying the different buildings contributing 
+to the training as well as the number of randomly 
+selected clients in each training round. 
+The figure below illustrates the different steps followed by 
+the suggested code. Furthermore, the FedAvg algorithm is 
+used for aggregating the locally trained models. Thus, 
+the suggested code assumes that the same data is available for 
+different clients.
+The disaggregator is compatible with all seq2point models implemented 
+in [Deep-NILMtk](https://github.com/BHafsa/deep-nilmtk-v1), where 
+the model type can be specified as a hyperparameter for the FL framework. 
+
+![img](./images/case-study.jpg)
 
 ## How to run ?
+
 ```
 docker build -t experiment_setup .
 docker run --gpus 'all' --name exp_exec experiment_setup
@@ -31,6 +38,5 @@ docker cp exp_exec:/home/guestuser/model_evaluation ./results
 **Hafsa Bousbiat**, email: [hafsa.bousbiat@gmail.com](hafsa.bousbiat@gmail.com)
 
 ## Copyright and license
-Code released under the [MIT Licence](https://github.com/BHafsa/DNN-NILM-experiment/blob/main/LICENSE). 
-
+Code released under the [MIT Licence](https://github.com/BHafsa/DNN-NILM-experiment/blob/main/LICENSE).
 ****
